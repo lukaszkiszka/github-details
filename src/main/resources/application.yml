@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+swagger:
+  enabled: true
+
+logging:
+  config: classpath:logback-spring.xml
+
+repositories:
+  connectionTimeout: 1000
+  readTimeout: 3000
+  github:
+    apiVersion: v3
+    apiUrl: https://api.github.com

@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/repos/serverErrorOwner/testRepository",
+    "headers": {
+      "Accept": {
+        "equalTo": "application/vnd.github.v3+json"
+      }
+    }
+  },
+  "response": {
+    "status": 500,
+    "bodyFileName": "github-get-repository-details-response-500.json",
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    }
+  }
+}

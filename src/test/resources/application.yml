@@ -1,0 +1,6 @@
+repositories:
+  connectionTimeout: 1000
+  readTimeout: 3000
+  github:
+    apiVersion: v3
+    apiUrl: http://127.0.0.1:1080

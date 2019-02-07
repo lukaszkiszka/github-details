@@ -1,0 +1,304 @@
+{
+  "info": {
+    "_postman_id": "5ce47403-4eb2-4794-ada6-f6ff95958cd6",
+    "name": "github-details",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Test",
+      "item": [
+        {
+          "name": "CorrectlyCallGithubDetailsServiceApi",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "20a591a5-a552-4a4c-a239-9446861a68c3",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "pm.test(\"Check response\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.fullName).to.eql(\"spring-projects/spring-framework\");",
+                  "    pm.expect(jsonData.description).to.eql(\"Spring Framework\");",
+                  "    pm.expect(jsonData.cloneUrl).to.eql(\"https://github.com/spring-projects/spring-framework.git\");",
+                  "    pm.expect(jsonData.stars).to.eql(24788);",
+                  "    pm.expect(jsonData.createdAt).to.eql(\"2010-12-08T04:04:45\");",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "32e1f136-5a9b-4118-91b4-7eb982417050",
+                "exec": [
+                  "pm.environment.set(\"repositoryOwner\", \"spring-projects\");",
+                  "pm.environment.set(\"repositoryName\", \"spring-framework\");"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{serviceUrl}}/githubdetails/v1/repositories/{{repositoryOwner}}/{{repositoryName}}",
+              "host": [
+                "{{serviceUrl}}"
+              ],
+              "path": [
+                "githubdetails",
+                "v1",
+                "repositories",
+                "{{repositoryOwner}}",
+                "{{repositoryName}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ShouldReturn404WhenRepositoryOwnerNotFound",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "20a591a5-a552-4a4c-a239-9446861a68c3",
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "32e1f136-5a9b-4118-91b4-7eb982417050",
+                "exec": [
+                  "pm.environment.set(\"repositoryOwner\", \"notExistOwner_\");",
+                  "pm.environment.set(\"repositoryName\", \"spring-framework\");"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{serviceUrl}}/githubdetails/v1/repositories/{{repositoryOwner}}/{{repositoryName}}",
+              "host": [
+                "{{serviceUrl}}"
+              ],
+              "path": [
+                "githubdetails",
+                "v1",
+                "repositories",
+                "{{repositoryOwner}}",
+                "{{repositoryName}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ShouldReturn404WhenRepositoryNameNotFound",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "20a591a5-a552-4a4c-a239-9446861a68c3",
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "32e1f136-5a9b-4118-91b4-7eb982417050",
+                "exec": [
+                  "pm.environment.set(\"repositoryOwner\", \"spring-projects\");",
+                  "pm.environment.set(\"repositoryName\", \"notExistRepository_\");"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{serviceUrl}}/githubdetails/v1/repositories/{{repositoryOwner}}/{{repositoryName}}",
+              "host": [
+                "{{serviceUrl}}"
+              ],
+              "path": [
+                "githubdetails",
+                "v1",
+                "repositories",
+                "{{repositoryOwner}}",
+                "{{repositoryName}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "ExampleRequestTemplateGithubDetailsServiceApi",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "20a591a5-a552-4a4c-a239-9446861a68c3",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "32e1f136-5a9b-4118-91b4-7eb982417050",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{serviceUrl}}/githubdetails/v1/repositories/spring-projects/spring-framework",
+          "host": [
+            "{{serviceUrl}}"
+          ],
+          "path": [
+            "githubdetails",
+            "v1",
+            "repositories",
+            "spring-projects",
+            "spring-framework"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ExampleRequestGithubApi",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/vnd.github.v3+json",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"dupa\": 1\n}"
+        },
+        "url": {
+          "raw": "https://api.github.com/repos/spring-projects/spring-framework",
+          "protocol": "https",
+          "host": [
+            "api",
+            "github",
+            "com"
+          ],
+          "path": [
+            "repos",
+            "spring-projects",
+            "spring-framework"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "db0d2e8e-a468-43f4-a49c-cd6e7c081398",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "2d918ed5-90c0-48f7-9b62-73f91e6e91fa",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "id": "2b72cebf-de5f-43df-b28c-f4637b329204",
+      "key": "repositoryOwner",
+      "value": "spring-projects",
+      "type": "string"
+    },
+    {
+      "id": "22e3a6eb-afbb-4f2d-811a-9af3d5ea0c31",
+      "key": "repositoryName",
+      "value": "spring-framework",
+      "type": "string"
+    },
+    {
+      "id": "1a3c9c0f-789e-4d60-8957-0fe87e445d80",
+      "key": "serviceUrl",
+      "value": "localhost:8080",
+      "type": "string"
+    },
+    {
+      "id": "e6b229c1-2ad1-43c4-ad04-fcbc333fd34a",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
